@@ -4,6 +4,8 @@
 
 Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [LinkedIn](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)) as a dedicated hiring demo and proof-of-work for the **AI Marketing Intern** position at **MySivi**.
 
+**Live Demo:** [https://mysivi.vercel.app/](https://mysivi.vercel.app/)
+
 ---
 
 ## ⚡ The 30-Second Overview
@@ -173,5 +175,6 @@ Mysivi/
 ## 👩‍💻 About the Author
 
 Built with focus and passion by **S K Karishma** for the **MySivi AI Marketing Intern** role.
+- **Live Demo:** [https://mysivi.vercel.app/](https://mysivi.vercel.app/)
 - **GitHub:** [@karishma0624](https://github.com/karishma0624)
 - **LinkedIn:** [linkedin.com/in/karishma-sivakumar-25a3a4300](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)

@@ -214,7 +214,7 @@ export const PainPointForm: React.FC<PainPointFormProps> = ({
       <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#ECE9F8]">
         <div className="text-xs text-body flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-brand-success" />
-          <span>Ready to execute 8 sequential autonomous AI agents</span>
+          <span>Ready to execute 8 sequential AI agent stages</span>
         </div>
 
         <div className="flex items-center gap-3 w-full sm:w-auto">

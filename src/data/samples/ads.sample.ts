@@ -118,7 +118,7 @@ export const SAMPLE_WEEKLY_EXPERIMENTS: WeeklyExperiment[] = [
     metricLift: '28.0% vs 26.0% control (+7.7% CR)',
     statisticalDecision: 'ITERATE',
     learning:
-      'CTR was strong (3.80%), but post-click install rate plateaued. Next test: customize play store screenshots to show mock interview tracks.',
+      'CTR was strong (3.80%), but post-click install rate plateaued. Next test: customize app store screenshots to show mock interview tracks.',
   },
   {
     weekNumber: 36,

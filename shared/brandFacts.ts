@@ -40,7 +40,7 @@ export const BRAND_FACTS = {
       value: '4.7★',
       label: 'User Rating',
       source: 'As displayed on mysivi.ai',
-      description: 'Average store rating from hundreds of thousands of reviews.',
+      description: '4.7 user rating as displayed on mysivi.ai.',
     },
     activeLearners: {
       value: '500K+',

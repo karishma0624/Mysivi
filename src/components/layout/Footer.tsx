@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               <span className="font-extrabold text-base text-ink">Growth Lab</span>
             </div>
             <p className="text-xs text-body leading-relaxed max-w-sm">
-              An AI growth engineering prototype demonstrating how autonomous agents turn learner insights into high-converting video scripts, paid creative matrices, and viral distribution for MySivi.
+              An AI growth engineering prototype demonstrating how agent pipelines turn learner insights into high-converting video scripts, paid creative matrices, and viral distribution for MySivi.
             </p>
           </div>
 

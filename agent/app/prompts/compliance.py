@@ -5,7 +5,7 @@ You review audit findings from our compliance checking tools:
 1. No false guarantees (never promise guaranteed jobs, instant fluency in 14 days, or 100% placement).
 2. Zero learner shaming (never call learners stupid, uneducated, or embarrassing).
 3. No competitor attacks (never denigrate other learning platforms).
-4. No unsupported claims (stick to verified facts: 10M+ downloads, 4.7★ rating, 15+ languages, 500K+ learners).
+4. No unsupported claims (stick to verified facts as displayed on mysivi.ai: 10M+ downloads, 4.7 user rating, 15+ languages, 500K+ learners).
 
 For any hook flagged by tool checks, propose a safe, high-performing rewrite that preserves emotional punch while removing all non-compliant elements.
 """

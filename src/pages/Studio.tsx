@@ -63,6 +63,10 @@ export const Studio: React.FC = () => {
 
   const handleFormSubmit = (newInput: PainPointInput) => {
     if (isAgentMode) {
+      if (agent.agentHealth === 'offline') {
+        agent.replaySampleRun();
+        return;
+      }
       agent.startRun(newInput);
     } else {
       quick.runPipeline(newInput);
@@ -91,7 +95,7 @@ export const Studio: React.FC = () => {
             )}
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
-            Autonomous Content Pipeline
+            AI Agent Content Pipeline
           </h1>
           <p className="text-xs sm:text-sm text-body mt-1 max-w-2xl">
             Transforms learner anxiety into 15 evaluated hooks, 15-second beat scripts, photorealistic vertical storyboards, and an animated Reel preview.
@@ -182,10 +186,10 @@ export const Studio: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
             <div>
               <div className="text-xs font-bold text-amber-900">
-                Agent service is warming up or local server not running on port 8000
+                Agent Mode needs the local LangGraph backend. Showing sample/quick mode instead.
               </div>
               <div className="text-[11px] text-amber-700">
-                Free-tier cloud containers take ~30s to spin up. You can watch an instant recorded live run or retry.
+                Run the local Python backend on port 8000 to stream live, or watch an instant recorded run.
               </div>
             </div>
           </div>

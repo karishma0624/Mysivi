@@ -1,9 +1,9 @@
 from langchain_core.tools import tool
 
 VERIFIED_BRAND_FACTS = {
-    "downloads": "10M+ Play Store & App Store downloads across India and global diaspora.",
+    "downloads": "10M+ downloads across India and global diaspora as displayed on mysivi.ai.",
     "languages": "15+ Indian regional languages supported (Hindi, Tamil, Telugu, Kannada, Marathi, Bengali, Malayalam, Gujarati, etc.).",
-    "rating": "4.7★ average user rating across 100,000+ public app reviews.",
+    "rating": "4.7★ user rating as displayed on mysivi.ai across public app reviews.",
     "community": "500,000+ active learners practicing spoken English daily.",
     "teacher": "Arya: Friendly, zero-judgment AI conversational tutor who listens, roleplays, and corrects gently without shaming.",
     "methodology": "5-minute daily low-stakes spoken conversation practice to build fluency muscle memory.",
@@ -28,4 +28,4 @@ def brand_facts(topic: str) -> str:
         if k in topic_clean:
             return v
 
-    return "MySivi is India's leading AI English-speaking tutor app (10M+ downloads, 4.7★ rating, 15+ languages) featuring Arya."
+    return "MySivi is India's leading AI English-speaking tutor app (10M+ downloads, 4.7★ user rating, 15+ languages as displayed on mysivi.ai) featuring Arya."

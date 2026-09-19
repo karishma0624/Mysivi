@@ -62,7 +62,7 @@ export const DEFAULT_NODES: NodeState[] = [
   { id: 'ideate', name: 'Ideate & Strategist', role: 'Psychological Barrier & 15 Hooks', status: 'idle' },
   { id: 'critique', name: 'Creative Critic', role: '5-Pillar Rubric Scoring', status: 'idle' },
   { id: 'quality_gate', name: 'Quality Gate', role: 'Score Threshold Router (>=7.0)', status: 'idle' },
-  { id: 'revise', name: 'Self-Revision Loop', role: 'Autonomous Recovery Engine', status: 'idle' },
+  { id: 'revise', name: 'Self-Revision Loop', role: 'Self-Revision Recovery Engine', status: 'idle' },
   { id: 'compliance', name: 'Compliance Guard', role: 'Tool Audit (brand_facts, claim_checker)', status: 'idle' },
   { id: 'rank', name: 'Algorithmic Ranker', role: 'Composite 5-Pillar Formula', status: 'idle' },
   { id: 'human_select', name: 'Human-in-the-Loop', role: 'LangGraph Interrupt Checkpoint', status: 'idle' },
@@ -400,8 +400,8 @@ export function useAgentStream() {
       await processSseStream(res, false);
     } catch (err: any) {
       if (err.name === 'AbortError') return;
-      console.warn('Live run failed, checking if sample replay is desired:', err);
-      setError(err.message || 'Failed to connect to agent service.');
+      console.warn('Live run failed, falling back to friendly message:', err);
+      setError('Agent Mode needs the local LangGraph backend. Showing sample/quick mode instead.');
       setIsRunning(false);
     }
   }, []);

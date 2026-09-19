@@ -16,7 +16,7 @@ export const AgentPipeline: React.FC<AgentPipelineProps> = ({
       <div className="flex items-center justify-between">
         <h3 className="text-xs font-bold uppercase tracking-wider text-body flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-brand-purple" />
-          <span>8-Agent Autonomous Pipeline (Sequential Execution)</span>
+          <span>8-Agent Pipeline (Sequential Execution)</span>
         </h3>
         <span className="text-[11px] text-body/80 font-medium">
           Free-tier optimized: 4 batched API calls + 1 in-code scoring engine

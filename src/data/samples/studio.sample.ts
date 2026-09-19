@@ -263,7 +263,7 @@ export const SAMPLE_SCRIPTS_OUTPUT: StudioScriptsOutput = {
           name: 'Call to Action',
           voiceover: 'Practice your interview answers for free on MySivi.',
           caption: 'Practice Spoken English • Download MySivi',
-          visual: 'App store download pill with 4.7★ rating badge.',
+          visual: 'App store download pill with 4.7★ user rating badge as displayed on mysivi.ai.',
           audioVibe: 'Positive ending chime.',
         },
       ],

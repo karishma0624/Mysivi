@@ -104,7 +104,7 @@ export const HumanSelectCard: React.FC<HumanSelectCardProps> = ({
       </div>
 
       <p className="text-xs sm:text-sm text-body leading-relaxed">
-        The autonomous pipeline paused execution at the <code>human_select</code> node. State is safely stored in memory.
+        The LangGraph pipeline paused execution at the <code>human_select</code> node. State is safely stored in memory.
         Choose which ranked hooks you want the parallel Script Directors to write full 15-second timed reels for:
       </p>
 

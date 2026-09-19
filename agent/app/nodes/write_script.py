@@ -44,7 +44,7 @@ def write_script_node(worker_input: Dict[str, Any]) -> Dict[str, Any]:
                 ScriptBeatModel(name="Hook", timecode="0:00 - 0:02", voiceover=hook_text, caption=hook_text, visual="Candidate in high-stakes environment looking frozen, sharp snap to camera.", audioVibe="Sharp bass drop, instant silence."),
                 ScriptBeatModel(name="Tension", timecode="0:02 - 0:06", voiceover="You know what to say in your head, but your mouth freezes the moment someone asks in English.", caption="Thoughts fluent. Tongue frozen.", visual="Close up: rapid eye movement, internal panic vs external silence.", audioVibe="Subtle ticking tension."),
                 ScriptBeatModel(name="The Turn", timecode="0:06 - 0:12", voiceover="Arya gives you 5 minutes of low-stakes conversation practice every single day. No human judging, just confidence.", caption="5 mins with Arya. Zero human judgment.", visual="Phone screen illuminates: Arya waving with vibrant waveform.", audioVibe="Warm uplifting synth chord."),
-                ScriptBeatModel(name="CTA", timecode="0:12 - 0:15", voiceover="Download MySivi today and practice before your next big interview.", caption="Download MySivi App 📲", visual="MySivi card with 10M+ downloads and 4.7★ Play Store rating.", audioVibe="Crisp acoustic outro chime."),
+                ScriptBeatModel(name="CTA", timecode="0:12 - 0:15", voiceover="Download MySivi today and practice before your next big interview.", caption="Download MySivi App 📲", visual="MySivi card with 10M+ downloads and 4.7★ user rating as displayed on mysivi.ai.", audioVibe="Crisp acoustic outro chime."),
             ],
         )
 

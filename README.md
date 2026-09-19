@@ -2,6 +2,8 @@
 
 > **"Give me a growth problem and I can use AI, data, and rapid prototyping to turn it into something testable."**
 
+> Unofficial prototype built by S K Karishma for her application to MySivi. Not affiliated with MySivi. Style inspired by mysivi.ai; site facts as displayed there.
+
 [![Live Demo](https://img.shields.io/badge/Live_Demo-mysivi.vercel.app-2F5BFF?style=for-the-badge&logo=vercel&logoColor=white)](https://mysivi.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-karishma0624%2FMysivi-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/karishma0624/Mysivi)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Karishma_Sivakumar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)
@@ -10,6 +12,9 @@ Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [Linked
 
 🚀 **Live Production Deployment:** **[https://mysivi.vercel.app/](https://mysivi.vercel.app/)**
 
+> [!NOTE]
+> The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
+
 ---
 
 ## ⚡ The 30-Second Overview
@@ -17,7 +22,7 @@ Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [Linked
 Growth Lab is an AI growth workspace designed around a single core loop:
 $$\text{Learner Problem} \longrightarrow \text{AI Insight} \longrightarrow \text{Content} \longrightarrow \text{Experiment} \longrightarrow \text{Measurement} \longrightarrow \text{Iteration}$$
 
-Rather than a generic dashboard with artificial statistics or superficial wrappers, Growth Lab models an **end-to-end growth operating system** directly aligned with MySivi's product (Arya, the AI English teacher for vernacular speakers in India):
+Growth Lab models an end-to-end growth workflow directly aligned with MySivi's product (Arya, the AI English teacher for vernacular speakers in India), using clearly labelled simulated data wherever real campaign data is not available:
 
 | Job Description Requirement | Growth Lab Module | How It Proves My Competence |
 | :--- | :--- | :--- |
@@ -45,23 +50,23 @@ Matches the friendly, high-trust educational aesthetic of **[mysivi.ai](https://
 ## 🛡️ Honesty as a Product Feature
 
 Every piece of synthetic or simulated data is transparently badged to reflect responsible product and marketing ethics:
-- `SAMPLE RUN` — Instant, pre-filled run that works immediately with **zero API keys required**.
+- `SAMPLE RUN` — Instant, pre-filled run that works immediately without requiring API keys.
 - `SIMULATED` — Synthetic ad performance data calculated deterministically to evaluate variant significance.
 - `AI-PREDICTED, NOT REAL CAMPAIGN DATA` — Clear demarcation that LLM metrics are heuristic, not actual Meta/Google spend logs.
-- `ANIMATED PREVIEW` & `ILLUSTRATED SCENE` — Beautiful custom pure vector SVG scenes rendered by `SceneComposer` (11 settings, 10 character archetypes, time-of-day lighting, mood FX, and Ken Burns motion). 100% free, deterministic, and containing zero real-person or stock photos.
-- **Zero Hallucinated Brand Claims:** All figures are tied directly to verified MySivi milestones: **10M+ Downloads**, **15+ Languages**, **4.7★ Play Store Rating**, **500K+ Active Community**.
+- `ANIMATED PREVIEW` & `ILLUSTRATED SCENE` — Custom vector SVG scenes rendered by `SceneComposer` (11 settings, 10 character archetypes, time-of-day lighting, mood FX, and Ken Burns motion). Deterministic, runs locally in the browser, and avoids stock photos.
+- Brand figures limited to those displayed on mysivi.ai (10M+ downloads, 15+ languages, 4.7 user rating, 500K+ learners).
 
 ---
 
-## 📸 Visual Showcase & Zero-Stock Pure Vector Engine
+## 📸 Visual Showcase & Vector Scene Engine
 
-### 1. Dynamic ReelPhone & Illustrated Scenes (100% Free, Zero Stock Photos)
+### 1. Dynamic ReelPhone & Illustrated Scenes
 ![ReelPhone Illustrated Scene](docs/screenshots/studio_reelphone_illustrated.png)
-*ReelPhone displaying Beat 1 ("The Interview Freeze") with pure vector SVG background, interactive waveform seeker, word-by-word subtitles, and "Illustrated scene" badge.*
+*ReelPhone displaying Beat 1 ("The Interview Freeze") with vector SVG background, interactive waveform seeker, word-by-word subtitles, and "Illustrated scene" badge.*
 
 ### 2. Vertical Storyboard Grid (4 Beats) & Structured Directives Inspection
 ![Vertical Storyboard Grid](docs/screenshots/vertical_storyboard_grid.png)
-*4-Beat Vertical Storyboard Grid showing pure vector SVG illustrations directed by Visual Director with zero real-person photos, structured directives, and prompt inspector.*
+*4-Beat Vertical Storyboard Grid showing vector SVG illustrations directed by Visual Director with structured directives and prompt inspector.*
 
 ![Structured Scene Directives Inspection](docs/screenshots/studio_inspect_modal.png)
 *Inspect modal displaying structured directives (Setting, TimeOfDay, Mood, Character, Action, Expression, Props, Palette).*
@@ -82,7 +87,10 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 ### 🌐 Live Production Deployment
 - **Live URL:** **[https://mysivi.vercel.app/](https://mysivi.vercel.app/)**
 - Continuous Deployment enabled via Vercel on push to `main`.
-- Sample mode, interactive Storyboard Grid, and vector SceneComposer run with zero external API dependencies.
+- Sample mode, interactive Storyboard Grid, and vector SceneComposer run client-side without external API dependencies.
+
+> [!NOTE]
+> The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
 
 ### 1. Prerequisites
 - Node.js 18+
@@ -103,7 +111,7 @@ npm install
 npm run dev
 ```
 > [!NOTE]
-> Plain `npm run dev` runs Vite SPA on `http://localhost:3000`. In this mode, pre-computed verified sample workflows run with instant zero-cost latency.
+> Plain `npm run dev` runs Vite SPA on `http://localhost:3000`. In this mode, pre-computed verified sample workflows run client-side with minimal latency.
 > If you want live Quick Mode `/api` serverless routes to run locally, use `npx vercel dev` (plain `npm run dev` returns 404 for `/api/*` endpoints because Vite does not execute Vercel Node serverless functions).
 
 #### B. Serverless `/api` Routes (Quick Mode Live LLM)
@@ -117,7 +125,8 @@ Agent mode utilizes a multi-agent LangGraph workflow. To run the agent backend:
 ```bash
 cd agent
 python -m venv .venv
-.\agent\.venv\Scripts\activate  # On Windows, or 'source .venv/bin/activate' on Mac/Linux
+.venv\Scripts\activate   # Windows
+source .venv/bin/activate   # Mac/Linux
 pip install -r requirements.txt
 uvicorn app.main:app --port 8000 --reload
 ```
@@ -133,7 +142,7 @@ During development, navigate to `http://localhost:3000/dev/scenes` to interactiv
 
 ## 🧪 Quality & Verification Suite
 
-All code adheres to strict TypeScript standards with zero console errors:
+All code adheres to strict TypeScript standards with passing test suites and clean typechecks:
 ```bash
 # Type check (strict TypeScript, noUnusedLocals, noUnusedParameters)
 npm run typecheck

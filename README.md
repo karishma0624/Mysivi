@@ -2,9 +2,13 @@
 
 > **"Give me a growth problem and I can use AI, data, and rapid prototyping to turn it into something testable."**
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-mysivi.vercel.app-2F5BFF?style=for-the-badge&logo=vercel&logoColor=white)](https://mysivi.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-karishma0624%2FMysivi-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/karishma0624/Mysivi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Karishma_Sivakumar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)
+
 Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [LinkedIn](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)) as a dedicated hiring demo and proof-of-work for the **AI Marketing Intern** position at **MySivi**.
 
-**Live Demo:** [https://mysivi.vercel.app/](https://mysivi.vercel.app/)
+🚀 **Live Production Deployment:** **[https://mysivi.vercel.app/](https://mysivi.vercel.app/)**
 
 ---
 
@@ -73,7 +77,12 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 
 ---
 
-## 🚀 Quick Start & Local Architecture
+## 🚀 Live Demo & Local Quick Start
+
+### 🌐 Live Production Deployment
+- **Live URL:** **[https://mysivi.vercel.app/](https://mysivi.vercel.app/)**
+- Continuous Deployment enabled via Vercel on push to `main`.
+- Sample mode, interactive Storyboard Grid, and vector SceneComposer run with zero external API dependencies.
 
 ### 1. Prerequisites
 - Node.js 18+
@@ -82,8 +91,8 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 
 ### 2. Installation
 ```bash
-git clone https://github.com/karishma0624/mysivi-growth-lab.git
-cd mysivi-growth-lab
+git clone https://github.com/karishma0624/Mysivi.git
+cd Mysivi
 npm install
 ```
 

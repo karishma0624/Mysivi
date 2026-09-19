@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
-import { Clock, Volume2, Eye, Music, MessageSquare } from 'lucide-react';
+import { Clock, Volume2, Eye, Music, MessageSquare, ChevronDown, ChevronUp } from 'lucide-react';
 import { ScriptItem } from '@shared/types';
 import { CopyButton } from '../ui/CopyButton';
 
@@ -15,8 +15,19 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
   selectedScriptIndex,
   onSelectScriptIndex,
 }) => {
+  const [expandedBeats, setExpandedBeats] = useState<Record<number, boolean>>({});
+
   const currentScript = scripts[selectedScriptIndex] || scripts[0];
   if (!currentScript) return null;
+
+  const hookDisplay = currentScript.hookText || currentScript.beats?.[0]?.voiceover || 'Script Concept';
+
+  const toggleExpand = (idx: number) => {
+    setExpandedBeats((prev) => ({
+      ...prev,
+      [idx]: !prev[idx],
+    }));
+  };
 
   return (
     <div className="space-y-6">
@@ -25,7 +36,7 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
         <div>
           <h3 className="text-lg font-extrabold text-ink">15-Second Video Script Timeline</h3>
           <p className="text-xs text-body">
-            Structured into 4 rapid retention beats with timed voiceover and on-screen captions.
+            Structured into 4 rapid retention beats with timed voiceover, on-screen captions, and visual directives.
           </p>
         </div>
 
@@ -55,12 +66,12 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
             Hook Concept #{selectedScriptIndex + 1}
           </span>
           <h4 className="text-sm font-extrabold text-ink mt-0.5">
-            "{currentScript.hookText}"
+            "{hookDisplay}"
           </h4>
         </div>
         <div className="flex items-center gap-2">
           <CopyButton
-            text={`Hook: "${currentScript.hookText}"\n\n${currentScript.beats
+            text={`Hook: "${hookDisplay}"\n\n${currentScript.beats
               .map((b) => `[${b.timecode}] ${b.name}: ${b.voiceover}`)
               .join('\n')}\n\nCTA: ${currentScript.cta}`}
             label="Copy Script"
@@ -70,8 +81,9 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
       </div>
 
       {/* 4 Beats Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
         {currentScript.beats.map((beat, idx) => {
+          const isExpanded = Boolean(expandedBeats[idx]);
           const beatColors = [
             'border-pastel-indigo bg-pastel-indigo/30',
             'border-pastel-amber bg-pastel-amber/30',
@@ -83,9 +95,10 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
             <div
               key={idx}
               className={clsx(
-                'rounded-2xl p-4 border bg-white shadow-card flex flex-col justify-between space-y-3',
+                'rounded-2xl p-4 border bg-white shadow-card flex flex-col justify-between space-y-3 transition-all cursor-pointer hover:shadow-md',
                 beatColors[idx % beatColors.length]
               )}
+              onClick={() => toggleExpand(idx)}
             >
               {/* Beat header */}
               <div>
@@ -94,9 +107,16 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
                     <Clock className="w-3 h-3" />
                     {beat.timecode}
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-body">
-                    Beat 0{idx + 1}
-                  </span>
+                  <div className="flex items-center gap-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-body">
+                      Beat 0{idx + 1}
+                    </span>
+                    {isExpanded ? (
+                      <ChevronUp className="w-3.5 h-3.5 text-body" />
+                    ) : (
+                      <ChevronDown className="w-3.5 h-3.5 text-body" />
+                    )}
+                  </div>
                 </div>
                 <h5 className="text-sm font-bold text-ink">{beat.name}</h5>
               </div>
@@ -107,7 +127,10 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
                   <Volume2 className="w-3 h-3" />
                   <span>Voiceover</span>
                 </div>
-                <p className="text-xs text-ink leading-relaxed font-medium">
+                <p className={clsx(
+                  'text-xs text-ink leading-relaxed font-medium',
+                  !isExpanded && 'line-clamp-3'
+                )}>
                   "{beat.voiceover}"
                 </p>
               </div>
@@ -118,24 +141,37 @@ export const ScriptTimeline: React.FC<ScriptTimelineProps> = ({
                   <MessageSquare className="w-3 h-3" />
                   <span>On-Screen Caption</span>
                 </div>
-                <p className="text-xs text-body font-mono">
+                <p className={clsx(
+                  'text-xs text-body font-mono',
+                  !isExpanded && 'line-clamp-2'
+                )}>
                   {beat.caption}
                 </p>
               </div>
 
               {/* Visual direction */}
               <div className="text-[11px] text-body leading-relaxed space-y-0.5">
-                <div className="flex items-center gap-1 font-semibold text-ink text-[10px] uppercase">
-                  <Eye className="w-3 h-3 text-body" />
-                  <span>Visual</span>
+                <div className="flex items-center justify-between font-semibold text-ink text-[10px] uppercase">
+                  <span className="flex items-center gap-1">
+                    <Eye className="w-3 h-3 text-body" />
+                    <span>Visual</span>
+                  </span>
+                  <span className="text-[9px] text-brand-purple font-normal lowercase">
+                    {isExpanded ? 'collapse' : 'click to expand'}
+                  </span>
                 </div>
-                <p className="text-body/90 line-clamp-3">{beat.visual}</p>
+                <p className={clsx(
+                  'text-body/90',
+                  !isExpanded ? 'line-clamp-3' : 'leading-normal'
+                )}>
+                  {beat.visual}
+                </p>
               </div>
 
               {/* Audio vibe */}
               <div className="pt-2 border-t border-[#ECE9F8] flex items-center gap-1.5 text-[10px] text-body/80">
                 <Music className="w-3 h-3 text-brand-purple shrink-0" />
-                <span className="truncate">{beat.audioVibe}</span>
+                <span className={isExpanded ? 'break-words' : 'truncate'}>{beat.audioVibe}</span>
               </div>
             </div>
           );

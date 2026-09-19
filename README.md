@@ -42,16 +42,41 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 - `SAMPLE RUN` — Instant, pre-filled run that works immediately with **zero API keys required**.
 - `SIMULATED` — Synthetic ad performance data calculated deterministically to evaluate variant significance.
 - `AI-PREDICTED, NOT REAL CAMPAIGN DATA` — Clear demarcation that LLM metrics are heuristic, not actual Meta/Google spend logs.
-- `ANIMATED PREVIEW` & `ILLUSTRATED FALLBACK` — Beautiful custom vector SVG scenes representing Arya and learners without pretending to be a live video generation tool.
+- `ANIMATED PREVIEW` & `ILLUSTRATED SCENE` — Beautiful custom pure vector SVG scenes rendered by `SceneComposer` (11 settings, 10 character archetypes, time-of-day lighting, mood FX, and Ken Burns motion). 100% free, deterministic, and containing zero real-person or stock photos.
 - **Zero Hallucinated Brand Claims:** All figures are tied directly to verified MySivi milestones: **10M+ Downloads**, **15+ Languages**, **4.7★ Play Store Rating**, **500K+ Active Community**.
 
 ---
 
-## 🚀 Quick Start
+## 📸 Visual Showcase & Zero-Stock Pure Vector Engine
+
+### 1. Dynamic ReelPhone & Illustrated Scenes (100% Free, Zero Stock Photos)
+![ReelPhone Illustrated Scene](docs/screenshots/studio_reelphone_illustrated.png)
+*ReelPhone displaying Beat 1 ("The Interview Freeze") with pure vector SVG background, interactive waveform seeker, word-by-word subtitles, and "Illustrated scene" badge.*
+
+### 2. Vertical Storyboard Grid (4 Beats) & Structured Directives Inspection
+![Storyboard Grid](docs/screenshots/studio_storyboard_grid.png)
+*4-Beat Storyboard Grid showing photorealistic generative prompts mapped to verified vector scenes.*
+
+![Structured Scene Directives Inspection](docs/screenshots/studio_inspect_modal.png)
+*Inspect modal displaying structured directives (Setting, TimeOfDay, Mood, Character, Action, Expression, Props, Palette).*
+
+### 3. Visual Director Test Bench (`/dev/scenes` - Gated in Dev)
+![Dev Scenes Gallery](docs/screenshots/dev_scenes_gallery.png)
+*Interactive test bench previewing all 11 settings, 10 character archetypes, time-of-day lighting, and Framer Motion Ken Burns effects.*
+
+### 4. Ad Lab & Viral Lab Distribution Engines
+| Ad Lab (Statistical Experimentation Engine) | Viral Lab (7-Day Multi-Channel Planner) |
+| :---: | :---: |
+| ![Ad Lab](docs/screenshots/ad_lab_experimentation.png) | ![Viral Lab](docs/screenshots/viral_lab_planner.png) |
+
+---
+
+## 🚀 Quick Start & Local Architecture
 
 ### 1. Prerequisites
 - Node.js 18+
 - npm 9+
+- Python 3.11+ (for Agent Mode backend)
 
 ### 2. Installation
 ```bash
@@ -60,29 +85,38 @@ cd mysivi-growth-lab
 npm install
 ```
 
-### 3. Local Development
+### 3. Running Modes & Backend Setup
+
+#### A. Frontend UI (Sample Mode & Quick Client)
 ```bash
 npm run dev
 ```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser. The app runs immediately with rich sample datasets.
+> [!NOTE]
+> Plain `npm run dev` runs Vite SPA on `http://localhost:3000`. In this mode, pre-computed verified sample workflows run with instant zero-cost latency.
+> If you want live Quick Mode `/api` serverless routes to run locally, use `npx vercel dev` (plain `npm run dev` returns 404 for `/api/*` endpoints because Vite does not execute Vercel Node serverless functions).
 
-### 4. Optional: Enable Live Gemini Generations
-Copy `.env.example` to `.env`:
-```bash
-cp .env.example .env
-```
-Fill in your Google AI Studio API key (free tier):
-```env
-GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_TEXT_MODEL=gemini-2.5-flash
-GEMINI_IMAGE_MODEL=imagen-3.0-generate-002
-ENABLE_LIVE_TEXT=true
-ENABLE_LIVE_IMAGES=true
-```
-Run with Vercel CLI locally to execute the serverless endpoints:
+#### B. Serverless `/api` Routes (Quick Mode Live LLM)
 ```bash
 npx vercel dev
 ```
+Runs Vite frontend + Vercel Node.js serverless functions locally on port 3000.
+
+#### C. Agent Mode (FastAPI LangGraph Python Backend)
+Agent mode utilizes a multi-agent LangGraph workflow. To run the agent backend:
+```bash
+cd agent
+python -m venv .venv
+.\agent\.venv\Scripts\activate  # On Windows, or 'source .venv/bin/activate' on Mac/Linux
+pip install -r requirements.txt
+uvicorn app.main:app --port 8000 --reload
+```
+The FastAPI server will be healthy at `http://localhost:8000/healthz`. The frontend automatically connects to port 8000 when Agent Mode is toggled.
+
+#### D. Visual Directives Test Bench (`/dev/scenes`)
+During development, navigate to `http://localhost:3000/dev/scenes` to interactively preview all 11 settings, 10 character archetypes, mood FX, and lighting presets.
+> [!IMPORTANT]
+> The `/dev/scenes` route is gated behind `import.meta.env.DEV` and is completely stripped and excluded from production builds.
+
 
 ---
 

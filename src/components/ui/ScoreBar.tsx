@@ -16,7 +16,8 @@ export const ScoreBar: React.FC<ScoreBarProps> = ({
   max = 10,
   className,
 }) => {
-  const percentage = Math.min(100, Math.max(0, (score / max) * 100));
+  const safeScore = score ?? 0;
+  const percentage = Math.min(100, Math.max(0, (safeScore / max) * 100));
 
   const getBarColor = (val: number) => {
     if (val >= 8.8) return 'from-[#12A36B] to-[#10B981]';
@@ -34,13 +35,13 @@ export const ScoreBar: React.FC<ScoreBarProps> = ({
             <span className="text-[10px] text-body/70">({Math.round(weight * 100)}%)</span>
           )}
         </span>
-        <span className="font-bold text-ink">{score.toFixed(1)}</span>
+        <span className="font-bold text-ink">{safeScore.toFixed(1)}</span>
       </div>
       <div className="h-2 w-full bg-[#ECE9F8] rounded-full overflow-hidden">
         <div
           className={clsx(
             'h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out',
-            getBarColor(score)
+            getBarColor(safeScore)
           )}
           style={{ width: `${percentage}%` }}
         />

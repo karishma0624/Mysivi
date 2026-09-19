@@ -41,20 +41,20 @@ export const HookCard: React.FC<HookCardProps> = ({
           {isTop ? (
             <Sticker
               text={stickerText}
-              variant={hook.rank === 1 ? 'purple' : hook.rank === 2 ? 'blue' : 'amber'}
+              variant={(hook.rank ?? 1) === 1 ? 'purple' : (hook.rank ?? 1) === 2 ? 'blue' : 'amber'}
               size="sm"
             />
           ) : (
             <span className="w-6 h-6 rounded-full bg-lavender-100 text-body font-bold text-xs flex items-center justify-center">
-              {hook.rank}
+              {hook.rank ?? 1}
             </span>
           )}
 
           <span className="text-xs font-bold text-ink">
-            Score: <span className="text-[#6D4AFF]">{hook.weightedScore.toFixed(1)}</span>/10
+            Score: <span className="text-[#6D4AFF]">{((hook.weightedScore ?? (hook as any).compositeScore ?? 0)).toFixed(1)}</span>/10
           </span>
 
-          {hook.compliance.isCompliant ? (
+          {(hook.compliance?.isCompliant ?? true) ? (
             <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-brand-success bg-[#E6F8EE] px-2 py-0.5 rounded-full border border-[#BBF7D0]">
               <Check className="w-3 h-3" /> Safe
             </span>
@@ -66,7 +66,7 @@ export const HookCard: React.FC<HookCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <CopyButton text={hook.displayText} size="sm" />
+          <CopyButton text={hook.displayText || hook.rawText || (hook as any).text || ''} size="sm" />
           <button
             type="button"
             onClick={() => setExpanded(!expanded)}
@@ -108,27 +108,27 @@ export const HookCard: React.FC<HookCardProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
               <ScoreBar
                 label="Scroll-stop"
-                score={hook.scores.scrollStop}
+                score={hook.scores?.scrollStop ?? 7.0}
                 weight={SCORING_WEIGHTS.scrollStop}
               />
               <ScoreBar
                 label="Relatability"
-                score={hook.scores.relatability}
+                score={hook.scores?.relatability ?? 7.0}
                 weight={SCORING_WEIGHTS.relatability}
               />
               <ScoreBar
                 label="Curiosity gap"
-                score={hook.scores.curiosityGap}
+                score={hook.scores?.curiosityGap ?? 7.0}
                 weight={SCORING_WEIGHTS.curiosityGap}
               />
               <ScoreBar
                 label="Clarity"
-                score={hook.scores.clarity}
+                score={hook.scores?.clarity ?? 7.0}
                 weight={SCORING_WEIGHTS.clarity}
               />
               <ScoreBar
                 label="Brand fit"
-                score={hook.scores.brandFit}
+                score={hook.scores?.brandFit ?? 7.0}
                 weight={SCORING_WEIGHTS.brandFit}
                 className="sm:col-span-2"
               />

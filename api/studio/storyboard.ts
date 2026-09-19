@@ -41,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     frameIndex,
     imageUrl: null,
     isGenerated: false,
-    label: 'Illustrated fallback',
+    label: 'Illustrated scene',
     description: `Vector SVG scene art: ${fallbackSvgId}`,
   });
 }

@@ -1,35 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import {
   Sparkles,
   ShieldCheck,
+  Cpu,
 } from 'lucide-react';
 import { ALL_PROMPTS } from '@shared/prompts';
 import { CopyButton } from '../ui/CopyButton';
+import { AGENT_BASE_URL } from '@/hooks/useAgentStream';
 
 export const PromptViewer: React.FC = () => {
+  const [promptsList, setPromptsList] = useState<any[]>(ALL_PROMPTS);
+  const [isPythonLive, setIsPythonLive] = useState(false);
   const [selectedPromptId, setSelectedPromptId] = useState<string>(ALL_PROMPTS[0].id);
   const [activeTab, setActiveTab] = useState<'system' | 'user' | 'schema' | 'fewshot'>('system');
 
-  const currentPrompt = ALL_PROMPTS.find((p) => p.id === selectedPromptId) || ALL_PROMPTS[0];
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchPrompts() {
+      try {
+        const res = await fetch(`${AGENT_BASE_URL}/prompts`, {
+          signal: AbortSignal.timeout(3000),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data.prompts && Array.isArray(data.prompts) && data.prompts.length > 0) {
+            setPromptsList(data.prompts);
+            setIsPythonLive(true);
+            setSelectedPromptId(data.prompts[0].id);
+          }
+        }
+      } catch {
+        // Fall back gracefully to local prompts definitions
+        setIsPythonLive(false);
+      }
+    }
+    fetchPrompts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const currentPrompt =
+    promptsList.find((p) => p.id === selectedPromptId) || promptsList[0] || ALL_PROMPTS[0];
 
   const fullPromptCopyText = `// ==========================================
 // AGENT: ${currentPrompt.name} (${currentPrompt.id})
-// DESIGN RATIONALE: ${currentPrompt.designNote}
+// DESIGN RATIONALE: ${currentPrompt.designNote || ''}
 // ==========================================
 
 [SYSTEM INSTRUCTION]
-${currentPrompt.system}
+${currentPrompt.system || ''}
 
 [USER PROMPT TEMPLATE]
-${currentPrompt.userTemplate}
+${currentPrompt.userTemplate || ''}
 
 [FEW-SHOT EXAMPLE]
-INPUT:
-${JSON.stringify(currentPrompt.fewShot.input, null, 2)}
-
-OUTPUT:
-${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
+${currentPrompt.fewShot ? JSON.stringify(currentPrompt.fewShot, null, 2) : 'N/A'}
 `;
 
   return (
@@ -39,12 +66,21 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-xl font-black text-ink">Prompt Engineering Laboratory</h2>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-brand-purple bg-lavender-100 px-2.5 py-0.5 rounded-full border border-[#DDD8F5]">
-              Production Source of Truth
-            </span>
+            {isPythonLive ? (
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1">
+                <Cpu className="w-3 h-3 text-emerald-600" />
+                Python Agent Prompts (agent/app/prompts/*)
+              </span>
+            ) : (
+              <span className="text-[10px] font-bold uppercase tracking-wider text-brand-purple bg-lavender-100 px-2.5 py-0.5 rounded-full border border-[#DDD8F5]">
+                Single Source of Truth
+              </span>
+            )}
           </div>
           <p className="text-xs text-body mt-0.5">
-            Single-source prompt definitions exported from <code>@shared/prompts/*</code> powering both API calls and UI documentation.
+            {isPythonLive
+              ? 'Serving live production system prompts directly from the LangGraph agent backend (GET /prompts).'
+              : 'Single-source prompt definitions exported from @shared/prompts/* powering both API calls and UI documentation.'}
           </p>
         </div>
 
@@ -58,13 +94,18 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
 
       {/* Main Split Layout: Left Agent Navigator, Right Prompt Inspector */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left Column: 13 Agent Prompts (4 cols) */}
+        {/* Left Column: Agent Prompts (4 cols) */}
         <div className="lg:col-span-4 bg-white border border-[#ECE9F8] rounded-[22px] p-3 shadow-card space-y-1.5 max-h-[750px] overflow-y-auto">
-          <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-body">
-            Active System Agents ({ALL_PROMPTS.length})
+          <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-body flex items-center justify-between">
+            <span>Active System Agents ({promptsList.length})</span>
+            {isPythonLive && (
+              <span className="text-[9px] font-mono text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">
+                Live Backend
+              </span>
+            )}
           </div>
 
-          {ALL_PROMPTS.map((prompt, idx) => {
+          {promptsList.map((prompt, idx) => {
             const isSelected = prompt.id === selectedPromptId;
 
             return (
@@ -93,7 +134,7 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
                       {prompt.name}
                     </div>
                     <div className="text-[10px] text-body truncate font-mono">
-                      {prompt.id}.ts
+                      {prompt.id}.{isPythonLive ? 'py' : 'ts'}
                     </div>
                   </div>
                 </div>
@@ -109,17 +150,20 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-purple">
-                  Agent Specification
+                  Agent Specification {isPythonLive && '• LangGraph Node'}
                 </span>
                 <h3 className="text-xl font-black text-ink mt-0.5">{currentPrompt.name}</h3>
+                {currentPrompt.role && (
+                  <p className="text-xs text-body mt-0.5 font-medium">{currentPrompt.role}</p>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <CopyButton
                   text={
                     activeTab === 'system'
-                      ? currentPrompt.system
+                      ? currentPrompt.system || ''
                       : activeTab === 'user'
-                      ? currentPrompt.userTemplate
+                      ? currentPrompt.userTemplate || ''
                       : JSON.stringify(currentPrompt.fewShot, null, 2)
                   }
                   label={`Copy ${activeTab.toUpperCase()}`}
@@ -129,21 +173,23 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
             </div>
 
             {/* Design Note Box */}
-            <div className="p-3 bg-lavender-50/80 rounded-xl border border-[#ECE9F8] flex items-start gap-2 text-xs">
-              <Sparkles className="w-4 h-4 text-brand-purple shrink-0 mt-0.5" />
-              <p className="text-body leading-relaxed">
-                <strong>Architectural Rationale:</strong> {currentPrompt.designNote}
-              </p>
-            </div>
+            {currentPrompt.designNote && (
+              <div className="p-3 bg-lavender-50/80 rounded-xl border border-[#ECE9F8] flex items-start gap-2 text-xs">
+                <Sparkles className="w-4 h-4 text-brand-purple shrink-0 mt-0.5" />
+                <p className="text-body leading-relaxed">
+                  <strong>Architectural Rationale:</strong> {currentPrompt.designNote}
+                </p>
+              </div>
+            )}
           </div>
 
-          {/* Sub-Tabs: System Prompt / User Template / Schema / Few-Shot */}
+          {/* Sub-Tabs */}
           <div className="flex items-center gap-1.5 p-1 bg-lavender-100 rounded-xl border border-[#DDD8F5] overflow-x-auto">
             {[
               { id: 'system', label: 'System Instruction' },
               { id: 'user', label: 'User Template & Delimiters' },
-              { id: 'fewshot', label: 'Few-Shot Example' },
-              { id: 'schema', label: 'Zod Output Schema' },
+              { id: 'fewshot', label: 'Few-Shot Calibration' },
+              { id: 'schema', label: 'Structured Schema' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -177,21 +223,21 @@ ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
 
             {activeTab === 'fewshot' && (
               <pre className="whitespace-pre-wrap leading-relaxed text-indigo-200">
-                {JSON.stringify(currentPrompt.fewShot, null, 2)}
+                {currentPrompt.fewShot
+                  ? JSON.stringify(currentPrompt.fewShot, null, 2)
+                  : '// Few-shot calibration embedded in system instruction.'}
               </pre>
             )}
 
             {activeTab === 'schema' && (
               <div className="space-y-2 text-amber-200">
                 <div className="text-[11px] text-slate-400 font-sans">
-                  Strict Zod runtime validation enforced on every response:
+                  Structured Pydantic / Zod runtime validation enforced on every response:
                 </div>
                 <pre className="whitespace-pre-wrap leading-relaxed">
-                  {`// Strict Zod Schema definition
-import { z } from 'zod';
-
-export const schema = ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
-// Validated with 1 automatic retry loop on schema validation error`}
+                  {currentPrompt.fewShot?.output
+                    ? `// Validated schema definition:\n${JSON.stringify(currentPrompt.fewShot.output, null, 2)}`
+                    : `// Model output validated with strict Pydantic OutputModel.\n// Automatic fallback on 429/503 rate limits.`}
                 </pre>
               </div>
             )}
@@ -209,7 +255,7 @@ export const schema = ${JSON.stringify(currentPrompt.fewShot.output, null, 2)}
             </div>
             <div className="flex items-center gap-1.5 text-body">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-success shrink-0" />
-              <span>Pure JSON response mode</span>
+              <span>Structured JSON response mode</span>
             </div>
           </div>
         </div>

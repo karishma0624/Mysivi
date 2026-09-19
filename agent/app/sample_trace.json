@@ -1,0 +1,743 @@
+[
+  {
+    "event": "run_started",
+    "data": {
+      "thread_id": "rec_c3ed47398e"
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "ideate",
+      "summary": "Diagnosed barrier & generated 15 candidate hooks across 4 angles.",
+      "preview": "Learners do not suffer from vocabulary lack; they suffer from the cognitive over...",
+      "duration_ms": 2729,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "critique",
+      "summary": "Evaluated 15 hooks against 5 weighted quality pillars.",
+      "preview": "Scored all 15 hooks with individual dimensional ratings.",
+      "duration_ms": 2844,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "tool_call",
+    "data": {
+      "name": "claim_checker",
+      "node": "compliance"
+    }
+  },
+  {
+    "event": "tool_result",
+    "data": {
+      "name": "claim_checker",
+      "ok": true
+    }
+  },
+  {
+    "event": "tool_call",
+    "data": {
+      "name": "brand_facts",
+      "node": "compliance"
+    }
+  },
+  {
+    "event": "tool_result",
+    "data": {
+      "name": "brand_facts",
+      "ok": true
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "compliance",
+      "summary": "Audited 15 hooks: 1 flagged and safely rewritten.",
+      "preview": "\u2713 Passed compliance checks (1 rewrites applied).",
+      "duration_ms": 3145,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "rank",
+      "summary": "Ranked 15 hooks using 5-factor weighted optimization (Mean Top 3: 9.12).",
+      "preview": "Top hook: 'You don't have bad English. You have an English-starting problem.' (Score: 9.2)",
+      "duration_ms": 0,
+      "model_calls": 0
+    }
+  },
+  {
+    "event": "interrupt",
+    "data": {
+      "kind": "select_hook",
+      "title": "Select Hooks to Develop into Scripts",
+      "description": "Pick 1 to 3 winning hooks for Arya's creative team to write full 15s scripts for.",
+      "options": [
+        {
+          "id": "hook_1",
+          "text": "You don't have bad English. You have an English-starting problem.",
+          "compositeScore": 9.2,
+          "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+          "scores": {
+            "scrollStop": 9.3,
+            "relatability": 9.5,
+            "curiosityGap": 8.8,
+            "clarity": 9.0,
+            "brandFit": 9.2
+          }
+        },
+        {
+          "id": "hook_2",
+          "text": "HR asks 'Tell me about yourself' and suddenly your mind goes blank?",
+          "compositeScore": 9.12,
+          "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+          "scores": {
+            "scrollStop": 9.2,
+            "relatability": 9.4,
+            "curiosityGap": 8.8,
+            "clarity": 8.9,
+            "brandFit": 9.2
+          }
+        },
+        {
+          "id": "hook_3",
+          "text": "Interview room mein dimag freeze hota hai? Listen to this.",
+          "compositeScore": 9.04,
+          "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+          "scores": {
+            "scrollStop": 9.1,
+            "relatability": 9.3,
+            "curiosityGap": 8.7,
+            "clarity": 8.9,
+            "brandFit": 9.1
+          }
+        }
+      ],
+      "defaultSelectedId": "hook_1"
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "human_select",
+      "summary": "Human-in-the-loop: User selected 2 hooks for parallel script generation.",
+      "preview": "Selected Hook IDs: hook_1, hook_2",
+      "duration_ms": 0,
+      "model_calls": 0
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "write_script",
+      "summary": "Generated 15s narrative script for 'HR asks 'Tell me about yourself' an...'",
+      "preview": "Script: Script: HR asks 'Tell me about yoursel... (4 beats)",
+      "duration_ms": 2822,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "write_script",
+      "summary": "Generated 15s narrative script for 'You don't have bad English. You hav...'",
+      "preview": "Script: Script: You don't have bad English. Yo... (4 beats)",
+      "duration_ms": 3372,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "media_plan",
+      "summary": "Formulated 4 vertical storyboard scenes and diffusion camera prompts.",
+      "preview": "Primary visual scene: Candidate seated in glass interview room, frozen expression...",
+      "duration_ms": 2493,
+      "model_calls": 1
+    }
+  },
+  {
+    "event": "node_finished",
+    "data": {
+      "node": "package",
+      "summary": "Packaged complete output: 15 hooks, 2 scripts, 4 storyboard frames.",
+      "preview": "Ready to ship: Scripts, Storyboards, ReelPhone preview, and Video Prompts generated.",
+      "duration_ms": 0,
+      "model_calls": 0
+    }
+  },
+  {
+    "event": "run_finished",
+    "data": {
+      "result": {
+        "insight": "Learners do not suffer from vocabulary lack; they suffer from the cognitive overload of translating thoughts from their mother tongue while under social judgment dread.",
+        "angles": [
+          {
+            "name": "The 3-Second Panic",
+            "description": "The physical silence between HR asking a question and the candidate's vocal cords locking up."
+          },
+          {
+            "name": "Mental Translation Delay",
+            "description": "Forming fluent sentences inside your mind, but stuttering when articulating out loud."
+          },
+          {
+            "name": "No-Judgment Safe Zone",
+            "description": "Why practicing 5 minutes with Arya removes the fear of human recruiter evaluation."
+          },
+          {
+            "name": "Action Over Grammar",
+            "description": "12 years of reading English textbooks does not train conversational muscle memory."
+          }
+        ],
+        "hooks": [
+          {
+            "id": "hook_1",
+            "text": "You don't have bad English. You have an English-starting problem.",
+            "angleIndex": 0
+          },
+          {
+            "id": "hook_2",
+            "text": "HR asks 'Tell me about yourself' and suddenly your mind goes blank?",
+            "angleIndex": 0
+          },
+          {
+            "id": "hook_3",
+            "text": "Interview room mein dimag freeze hota hai? Listen to this.",
+            "angleIndex": 1
+          },
+          {
+            "id": "hook_4",
+            "text": "Reading English is easy. Speaking it without stuttering is the real boss.",
+            "angleIndex": 1
+          },
+          {
+            "id": "hook_5",
+            "text": "Stop translating Hindi to English in your head mid-interview.",
+            "angleIndex": 1
+          },
+          {
+            "id": "hook_6",
+            "text": "What if you could practice 10 mock interviews with zero human judgment?",
+            "angleIndex": 2
+          },
+          {
+            "id": "hook_7",
+            "text": "Arya doesn't laugh when you say 'revert back'. She just helps.",
+            "angleIndex": 2
+          },
+          {
+            "id": "hook_8",
+            "text": "Your grammar isn't the problem. Your speaking hesitation is.",
+            "angleIndex": 2
+          },
+          {
+            "id": "hook_9",
+            "text": "5 minutes with Arya before your interview changes your whole posture.",
+            "angleIndex": 2
+          },
+          {
+            "id": "hook_10",
+            "text": "You studied English for 12 years. Why can't you speak it?",
+            "angleIndex": 3
+          },
+          {
+            "id": "hook_11",
+            "text": "Textbook English won't save you in a 3-person technical panel.",
+            "angleIndex": 3
+          },
+          {
+            "id": "hook_12",
+            "text": "Fluency isn't an accent. It's speaking without that 3-second panic pause.",
+            "angleIndex": 0
+          },
+          {
+            "id": "hook_13",
+            "text": "Guaranteed fluent in 14 days or your money back.",
+            "angleIndex": 2
+          },
+          {
+            "id": "hook_14",
+            "text": "Darr tab tak rehta hai jab tak pehla sentence nahi nikalta.",
+            "angleIndex": 1
+          },
+          {
+            "id": "hook_15",
+            "text": "Don't let spoken English stand between you and your offer letter.",
+            "angleIndex": 3
+          }
+        ],
+        "rankedHooks": [
+          {
+            "id": "hook_1",
+            "text": "You don't have bad English. You have an English-starting problem.",
+            "angleIndex": 0,
+            "compositeScore": 9.2,
+            "scores": {
+              "scrollStop": 9.3,
+              "relatability": 9.5,
+              "curiosityGap": 8.8,
+              "clarity": 9.0,
+              "brandFit": 9.2
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": true
+          },
+          {
+            "id": "hook_2",
+            "text": "HR asks 'Tell me about yourself' and suddenly your mind goes blank?",
+            "angleIndex": 0,
+            "compositeScore": 9.12,
+            "scores": {
+              "scrollStop": 9.2,
+              "relatability": 9.4,
+              "curiosityGap": 8.8,
+              "clarity": 8.9,
+              "brandFit": 9.2
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": true
+          },
+          {
+            "id": "hook_3",
+            "text": "Interview room mein dimag freeze hota hai? Listen to this.",
+            "angleIndex": 1,
+            "compositeScore": 9.04,
+            "scores": {
+              "scrollStop": 9.1,
+              "relatability": 9.3,
+              "curiosityGap": 8.7,
+              "clarity": 8.9,
+              "brandFit": 9.1
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": true
+          },
+          {
+            "id": "hook_4",
+            "text": "Reading English is easy. Speaking it without stuttering is the real boss.",
+            "angleIndex": 1,
+            "compositeScore": 9.0,
+            "scores": {
+              "scrollStop": 9.0,
+              "relatability": 9.3,
+              "curiosityGap": 8.7,
+              "clarity": 8.8,
+              "brandFit": 9.1
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_5",
+            "text": "Stop translating Hindi to English in your head mid-interview.",
+            "angleIndex": 1,
+            "compositeScore": 8.91,
+            "scores": {
+              "scrollStop": 8.9,
+              "relatability": 9.2,
+              "curiosityGap": 8.6,
+              "clarity": 8.8,
+              "brandFit": 9.0
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_6",
+            "text": "What if you could practice 10 mock interviews with zero human judgment?",
+            "angleIndex": 2,
+            "compositeScore": 8.86,
+            "scores": {
+              "scrollStop": 8.8,
+              "relatability": 9.1,
+              "curiosityGap": 8.6,
+              "clarity": 8.8,
+              "brandFit": 9.0
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_7",
+            "text": "Arya doesn't laugh when you say 'revert back'. She just helps.",
+            "angleIndex": 2,
+            "compositeScore": 8.76,
+            "scores": {
+              "scrollStop": 8.7,
+              "relatability": 9.0,
+              "curiosityGap": 8.5,
+              "clarity": 8.7,
+              "brandFit": 9.0
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_8",
+            "text": "Your grammar isn't the problem. Your speaking hesitation is.",
+            "angleIndex": 2,
+            "compositeScore": 8.7,
+            "scores": {
+              "scrollStop": 8.6,
+              "relatability": 8.9,
+              "curiosityGap": 8.5,
+              "clarity": 8.7,
+              "brandFit": 8.9
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_9",
+            "text": "5 minutes with Arya before your interview changes your whole posture.",
+            "angleIndex": 2,
+            "compositeScore": 8.63,
+            "scores": {
+              "scrollStop": 8.5,
+              "relatability": 8.9,
+              "curiosityGap": 8.4,
+              "clarity": 8.6,
+              "brandFit": 8.9
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_10",
+            "text": "You studied English for 12 years. Why can't you speak it?",
+            "angleIndex": 3,
+            "compositeScore": 8.57,
+            "scores": {
+              "scrollStop": 8.4,
+              "relatability": 8.8,
+              "curiosityGap": 8.4,
+              "clarity": 8.6,
+              "brandFit": 8.8
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_11",
+            "text": "Textbook English won't save you in a 3-person technical panel.",
+            "angleIndex": 3,
+            "compositeScore": 8.48,
+            "scores": {
+              "scrollStop": 8.3,
+              "relatability": 8.7,
+              "curiosityGap": 8.3,
+              "clarity": 8.5,
+              "brandFit": 8.8
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_12",
+            "text": "Fluency isn't an accent. It's speaking without that 3-second panic pause.",
+            "angleIndex": 0,
+            "compositeScore": 8.39,
+            "scores": {
+              "scrollStop": 8.2,
+              "relatability": 8.6,
+              "curiosityGap": 8.2,
+              "clarity": 8.4,
+              "brandFit": 8.8
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_14",
+            "text": "Darr tab tak rehta hai jab tak pehla sentence nahi nikalta.",
+            "angleIndex": 1,
+            "compositeScore": 8.28,
+            "scores": {
+              "scrollStop": 8.0,
+              "relatability": 8.5,
+              "curiosityGap": 8.2,
+              "clarity": 8.3,
+              "brandFit": 8.7
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_15",
+            "text": "Don't let spoken English stand between you and your offer letter.",
+            "angleIndex": 3,
+            "compositeScore": 8.2,
+            "scores": {
+              "scrollStop": 7.9,
+              "relatability": 8.4,
+              "curiosityGap": 8.1,
+              "clarity": 8.3,
+              "brandFit": 8.6
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": true,
+              "flags": [],
+              "safeRewrite": null
+            },
+            "isTopHook": false
+          },
+          {
+            "id": "hook_13",
+            "text": "Guaranteed fluent in 14 days or your money back.",
+            "angleIndex": 2,
+            "compositeScore": 0.0,
+            "scores": {
+              "scrollStop": 8.1,
+              "relatability": 8.5,
+              "curiosityGap": 8.2,
+              "clarity": 8.4,
+              "brandFit": 8.7
+            },
+            "critique": "Strong resonance for Job seekers with natural colloquial framing.",
+            "compliance": {
+              "isCompliant": false,
+              "flags": [
+                "GUARANTEE: Claims guaranteed fluency or outcome without educational basis."
+              ],
+              "safeRewrite": "Practice spoken English with Arya in 5 minutes a day with zero judgment."
+            },
+            "isTopHook": false
+          }
+        ],
+        "scripts": [
+          {
+            "id": "script_hook_1",
+            "hookId": "hook_1",
+            "title": "Script: You don't have bad English. Yo...",
+            "beats": [
+              {
+                "name": "Hook",
+                "timecode": "0:00 - 0:02",
+                "voiceover": "You don't have bad English. You have an English-starting problem.",
+                "caption": "You don't have bad English. You have an English-starting problem.",
+                "visual": "Candidate in high-stakes environment looking frozen, sharp snap to camera.",
+                "audioVibe": "Sharp bass drop, instant silence."
+              },
+              {
+                "name": "Tension",
+                "timecode": "0:02 - 0:06",
+                "voiceover": "You know what to say in your head, but your mouth freezes the moment someone asks in English.",
+                "caption": "Thoughts fluent. Tongue frozen.",
+                "visual": "Close up: rapid eye movement, internal panic vs external silence.",
+                "audioVibe": "Subtle ticking tension."
+              },
+              {
+                "name": "The Turn",
+                "timecode": "0:06 - 0:12",
+                "voiceover": "Arya gives you 5 minutes of low-stakes conversation practice every single day. No human judging, just confidence.",
+                "caption": "5 mins with Arya. Zero human judgment.",
+                "visual": "Phone screen illuminates: Arya waving with vibrant waveform.",
+                "audioVibe": "Warm uplifting synth chord."
+              },
+              {
+                "name": "CTA",
+                "timecode": "0:12 - 0:15",
+                "voiceover": "Download MySivi today and practice before your next big interview.",
+                "caption": "Download MySivi App \ud83d\udcf2",
+                "visual": "MySivi card with 10M+ downloads and 4.7\u2605 Play Store rating.",
+                "audioVibe": "Crisp acoustic outro chime."
+              }
+            ],
+            "targetAudience": "Job seekers",
+            "platform": "Instagram Reel",
+            "estimatedDurationSeconds": 15
+          },
+          {
+            "id": "script_hook_2",
+            "hookId": "hook_2",
+            "title": "Script: HR asks 'Tell me about yoursel...",
+            "beats": [
+              {
+                "name": "Hook",
+                "timecode": "0:00 - 0:02",
+                "voiceover": "HR asks 'Tell me about yourself' and suddenly your mind goes blank?",
+                "caption": "HR asks 'Tell me about yourself' and suddenly your mind goes blank?",
+                "visual": "Candidate in high-stakes environment looking frozen, sharp snap to camera.",
+                "audioVibe": "Sharp bass drop, instant silence."
+              },
+              {
+                "name": "Tension",
+                "timecode": "0:02 - 0:06",
+                "voiceover": "You know what to say in your head, but your mouth freezes the moment someone asks in English.",
+                "caption": "Thoughts fluent. Tongue frozen.",
+                "visual": "Close up: rapid eye movement, internal panic vs external silence.",
+                "audioVibe": "Subtle ticking tension."
+              },
+              {
+                "name": "The Turn",
+                "timecode": "0:06 - 0:12",
+                "voiceover": "Arya gives you 5 minutes of low-stakes conversation practice every single day. No human judging, just confidence.",
+                "caption": "5 mins with Arya. Zero human judgment.",
+                "visual": "Phone screen illuminates: Arya waving with vibrant waveform.",
+                "audioVibe": "Warm uplifting synth chord."
+              },
+              {
+                "name": "CTA",
+                "timecode": "0:12 - 0:15",
+                "voiceover": "Download MySivi today and practice before your next big interview.",
+                "caption": "Download MySivi App \ud83d\udcf2",
+                "visual": "MySivi card with 10M+ downloads and 4.7\u2605 Play Store rating.",
+                "audioVibe": "Crisp acoustic outro chime."
+              }
+            ],
+            "targetAudience": "Job seekers",
+            "platform": "Instagram Reel",
+            "estimatedDurationSeconds": 15
+          }
+        ],
+        "storyboardFrames": [
+          {
+            "timecode": "0:00 - 0:02",
+            "frameIndex": 1,
+            "sceneDescription": "Candidate seated in glass interview room, frozen expression",
+            "imagePrompt": "Candidate seated in corporate interview room, shallow depth of field, 9:16 vertical cinematic",
+            "altText": "Interview freeze",
+            "fallbackSvgId": "interview_freeze"
+          },
+          {
+            "timecode": "0:02 - 0:06",
+            "frameIndex": 2,
+            "sceneDescription": "Split screen: English words floating vs candidate hesitation",
+            "imagePrompt": "Visual metaphor for mental translation delay, warm soft rim light, 9:16 vertical",
+            "altText": "Mental translation block",
+            "fallbackSvgId": "mirror_practice"
+          },
+          {
+            "timecode": "0:06 - 0:12",
+            "frameIndex": 3,
+            "sceneDescription": "Mobile screen glowing: Arya AI waving with audio waveform pulse",
+            "imagePrompt": "Modern smartphone displaying friendly Arya AI tutor with lavender glow, 9:16 vertical",
+            "altText": "Arya speaking practice",
+            "fallbackSvgId": "arya_call"
+          },
+          {
+            "timecode": "0:12 - 0:15",
+            "frameIndex": 4,
+            "sceneDescription": "Candidate smiling with confident posture and offer letter",
+            "imagePrompt": "Confident young professional leaving office lobby with smile, golden hour daylight, 9:16 vertical",
+            "altText": "Speaking breakthrough",
+            "fallbackSvgId": "speaking_breakthrough"
+          }
+        ],
+        "videoPrompts": [
+          {
+            "shot": "CU",
+            "camera": "Subtle 1.1x slow push-in",
+            "lighting": "Soft 4000K office daylight",
+            "motion": "Slow natural breathing",
+            "duration": "2s",
+            "prompt": "Close up of Indian candidate in interview, eyes showing sudden hesitation, 24fps cinematic 9:16",
+            "negativePrompt": "blurry, amateur, distorted text"
+          },
+          {
+            "shot": "MS",
+            "camera": "Static locked off",
+            "lighting": "Warm key light with cool rim",
+            "motion": "Subtle split screen drift",
+            "duration": "4s",
+            "prompt": "Medium shot of office interview room, slight depth of field blur, cinematic color grade, 24fps",
+            "negativePrompt": "blurry, bad anatomy"
+          },
+          {
+            "shot": "OTS",
+            "camera": "Pedestal up 15cm",
+            "lighting": "Vibrant smartphone screen glow",
+            "motion": "Gentle handheld sway",
+            "duration": "6s",
+            "prompt": "Over the shoulder shot of learner holding phone, Arya AI avatar smiling, clean lavender UI, 24fps",
+            "negativePrompt": "blurry, distorted fingers"
+          },
+          {
+            "shot": "MS",
+            "camera": "Slow tracking backward",
+            "lighting": "Golden hour sunny exterior",
+            "motion": "Empowered walking forward",
+            "duration": "3s",
+            "prompt": "Confident learner stepping into sunlit tech campus, natural proud posture, cinematic 24fps",
+            "negativePrompt": "blurry, jitter"
+          }
+        ],
+        "revisionCount": 0,
+        "totalModelCalls": 6
+      }
+    }
+  }
+]

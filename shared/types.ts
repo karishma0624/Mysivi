@@ -28,12 +28,33 @@ import {
   SupportedLanguageEnum,
   PlatformEnum,
   ToneEnum,
+  SettingEnum,
+  TimeOfDayEnum,
+  MoodEnum,
+  SubjectWhoEnum,
+  SubjectActionEnum,
+  SubjectExpressionEnum,
+  PropEnum,
+  PaletteEnum,
+  CameraMotionEnum,
+  SceneSchema,
 } from './schemas';
 
 export type Audience = z.infer<typeof AudienceEnum>;
 export type SupportedLanguage = z.infer<typeof SupportedLanguageEnum>;
 export type Platform = z.infer<typeof PlatformEnum>;
 export type Tone = z.infer<typeof ToneEnum>;
+
+export type Setting = z.infer<typeof SettingEnum>;
+export type TimeOfDay = z.infer<typeof TimeOfDayEnum>;
+export type Mood = z.infer<typeof MoodEnum>;
+export type SubjectWho = z.infer<typeof SubjectWhoEnum>;
+export type SubjectAction = z.infer<typeof SubjectActionEnum>;
+export type SubjectExpression = z.infer<typeof SubjectExpressionEnum>;
+export type Prop = z.infer<typeof PropEnum>;
+export type Palette = z.infer<typeof PaletteEnum>;
+export type CameraMotion = z.infer<typeof CameraMotionEnum>;
+export type Scene = z.infer<typeof SceneSchema>;
 
 export type PainPointInput = z.infer<typeof PainPointInputSchema>;
 export type HookItem = z.infer<typeof HookItemSchema>;

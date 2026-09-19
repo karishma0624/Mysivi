@@ -30,6 +30,98 @@ export const ToneEnum = z.enum([
   'Bold',
 ]);
 
+export const SettingEnum = z.enum([
+  'classroom_pta',
+  'office_interview',
+  'cafe',
+  'conference_room',
+  'college_campus',
+  'bus_stop',
+  'bedroom_study',
+  'metro_train',
+  'living_room',
+  'dinner_table',
+  'street_market',
+]);
+
+export const TimeOfDayEnum = z.enum(['morning', 'afternoon', 'evening', 'night']);
+
+export const MoodEnum = z.enum([
+  'anxious',
+  'embarrassed',
+  'hesitant',
+  'hopeful',
+  'confident',
+  'joyful',
+]);
+
+export const SubjectWhoEnum = z.enum([
+  'young_woman',
+  'young_man',
+  'mother',
+  'father',
+  'student_f',
+  'student_m',
+  'professional_f',
+  'professional_m',
+  'arya_avatar',
+  'none',
+]);
+
+export const SubjectActionEnum = z.enum([
+  'freezing',
+  'looking_down',
+  'speaking_confidently',
+  'holding_phone',
+  'sipping_coffee',
+  'presenting',
+]);
+
+export const SubjectExpressionEnum = z.enum([
+  'worried',
+  'neutral',
+  'smiling',
+  'awkward_smile',
+  'confident',
+]);
+
+export const PropEnum = z.enum([
+  'phone_with_mysivi',
+  'coffee_cup',
+  'resume_folder',
+  'notebook',
+  'laptop',
+  'none',
+]);
+
+export const PaletteEnum = z.enum([
+  'warm_anxious',
+  'cool_corporate',
+  'hopeful_lavender',
+  'bold_success',
+]);
+
+export const CameraMotionEnum = z.enum([
+  'slow_zoom_in',
+  'pan_right',
+  'static',
+  'subtle_shake',
+]);
+
+export const SceneSchema = z.object({
+  setting: SettingEnum,
+  timeOfDay: TimeOfDayEnum,
+  mood: MoodEnum,
+  subject: z.object({
+    who: SubjectWhoEnum,
+    action: SubjectActionEnum,
+    expression: SubjectExpressionEnum,
+  }),
+  props: z.array(PropEnum),
+  palette: PaletteEnum,
+  cameraMotion: CameraMotionEnum,
+});
+
 // 1. Studio Input
 export const PainPointInputSchema = z.object({
   painPoint: z.string().min(5).max(200),
@@ -90,6 +182,7 @@ export const ScriptBeatSchema = z.object({
   caption: z.string(),
   visual: z.string(),
   audioVibe: z.string(),
+  scene: SceneSchema.optional(),
 });
 
 export const ScriptItemSchema = z.object({
@@ -111,12 +204,11 @@ export const StoryboardFrameSchema = z.object({
   sceneDescription: z.string(),
   imagePrompt: z.string(),
   altText: z.string(),
-  fallbackSvgId: z.enum([
-    'interview_freeze',
-    'mirror_practice',
-    'arya_call',
-    'speaking_breakthrough',
-  ]),
+  fallbackSvgId: z.string().optional(),
+  imageSubject: z.string().optional(),
+  scene: SceneSchema.optional(),
+  imageUrl: z.string().nullable().optional(),
+  label: z.enum(['AI-generated', 'Illustrated scene', 'Illustrated fallback']).optional(),
 });
 
 export const VideoShotPromptSchema = z.object({
@@ -139,14 +231,16 @@ export const StoryboardGenerateInputSchema = z.object({
   frameIndex: z.number().min(1).max(4),
   imagePrompt: z.string(),
   fallbackSvgId: z.string(),
+  scene: SceneSchema.optional(),
 });
 
 export const StoryboardGenerateOutputSchema = z.object({
   frameIndex: z.number(),
   imageUrl: z.string().nullable(),
   isGenerated: z.boolean(),
-  label: z.enum(['AI-generated', 'Illustrated fallback']),
+  label: z.enum(['AI-generated', 'Illustrated scene', 'Illustrated fallback']),
   description: z.string(),
+  scene: SceneSchema.optional(),
 });
 
 // 7. Ads Generate (Variant Matrix)

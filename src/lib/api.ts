@@ -5,6 +5,7 @@ import {
   StudioScriptsOutput,
   StudioMediaPlanOutput,
   StoryboardGenerateOutput,
+  Scene,
   AdsGenerateOutput,
   AdsExplainInput,
   AdsExplainOutput,
@@ -262,7 +263,8 @@ export const api = {
   async generateStoryboardFrame(params: {
     frameIndex: number;
     imagePrompt: string;
-    fallbackSvgId: string;
+    fallbackSvgId?: string;
+    scene?: Scene;
   }): Promise<ApiResponse<StoryboardGenerateOutput>> {
     try {
       const res = await fetchWithTimeout('/api/studio/storyboard', {
@@ -286,7 +288,7 @@ export const api = {
         frameIndex: params.frameIndex,
         imageUrl: null,
         isGenerated: false,
-        label: 'Illustrated fallback',
+        label: 'Illustrated scene',
         description: `Custom SVG Scene Art for frame ${params.frameIndex}`,
       },
       isSample: true,

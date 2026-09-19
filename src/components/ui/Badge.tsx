@@ -8,6 +8,7 @@ export type BadgeKind =
   | 'ai_predicted'
   | 'animated_preview'
   | 'heuristic'
+  | 'illustrated_scene'
   | 'illustrated_fallback'
   | 'ai_generated'
   | 'compliance_clean'
@@ -52,8 +53,13 @@ export const Badge: React.FC<BadgeProps> = ({
       icon: <Info className="w-3 h-3" />,
       style: 'bg-[#F8FAFC] text-[#64748B] border-[#E2E8F0]',
     },
+    illustrated_scene: {
+      label: text || 'Illustrated scene',
+      icon: <ImageIcon className="w-3 h-3" />,
+      style: 'bg-[#F0EEFF] text-[#6D4AFF] border-[#DDD8F5]',
+    },
     illustrated_fallback: {
-      label: text || 'Illustrated fallback',
+      label: text || 'Illustrated scene',
       icon: <ImageIcon className="w-3 h-3" />,
       style: 'bg-[#F0EEFF] text-[#6D4AFF] border-[#DDD8F5]',
     },

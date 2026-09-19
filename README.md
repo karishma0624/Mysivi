@@ -2,7 +2,7 @@
 
 > **"Give me a growth problem and I can use AI, data, and rapid prototyping to turn it into something testable."**
 
-Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [LinkedIn](https://linkedin.com/in/karishma-sivakumar)) as a dedicated hiring demo and proof-of-work for the **AI Marketing Intern** position at **MySivi**.
+Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [LinkedIn](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)) as a dedicated hiring demo and proof-of-work for the **AI Marketing Intern** position at **MySivi**.
 
 ---
 
@@ -54,8 +54,8 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 *ReelPhone displaying Beat 1 ("The Interview Freeze") with pure vector SVG background, interactive waveform seeker, word-by-word subtitles, and "Illustrated scene" badge.*
 
 ### 2. Vertical Storyboard Grid (4 Beats) & Structured Directives Inspection
-![Storyboard Grid](docs/screenshots/studio_storyboard_grid.png)
-*4-Beat Storyboard Grid showing photorealistic generative prompts mapped to verified vector scenes.*
+![Vertical Storyboard Grid](docs/screenshots/vertical_storyboard_grid.png)
+*4-Beat Vertical Storyboard Grid showing pure vector SVG illustrations directed by Visual Director with zero real-person photos, structured directives, and prompt inspector.*
 
 ![Structured Scene Directives Inspection](docs/screenshots/studio_inspect_modal.png)
 *Inspect modal displaying structured directives (Setting, TimeOfDay, Mood, Character, Action, Expression, Props, Palette).*
@@ -174,4 +174,4 @@ Mysivi/
 
 Built with focus and passion by **S K Karishma** for the **MySivi AI Marketing Intern** role.
 - **GitHub:** [@karishma0624](https://github.com/karishma0624)
-- **LinkedIn:** [linkedin.com/in/karishma-sivakumar](https://linkedin.com/in/karishma-sivakumar)
+- **LinkedIn:** [linkedin.com/in/karishma-sivakumar-25a3a4300](https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/)

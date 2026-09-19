@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
                 <ExternalLink className="w-3 h-3 text-body" />
               </a>
               <a
-                href="https://linkedin.com/in/karishma-sivakumar"
+                href="https://www.linkedin.com/in/karishma-sivakumar-25a3a4300/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-lavender-100 hover:bg-lavender-200 text-[#2F5BFF] transition-colors border border-[#ECE9F8]"

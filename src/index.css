@@ -1,0 +1,106 @@
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@import '@fontsource/noto-sans/400.css';
+@import '@fontsource/noto-sans/500.css';
+@import '@fontsource/noto-sans/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-lavender: #F6F4FF;
+    --ink: #0B1020;
+    --body: #5B6478;
+    --brand-blue: #2F5BFF;
+    --brand-purple: #7B4DFF;
+    --violet-accent: #6D4AFF;
+    --success: #12A36B;
+  }
+
+  body {
+    background-color: var(--bg-lavender);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #6D4AFF;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #2F5BFF 0%, #7B4DFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-subtle {
+    background: linear-gradient(135deg, #4A5BFF 0%, #6D4AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #2F5BFF 0%, #7B4DFF 100%);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 10px 30px -10px rgba(109, 74, 255, 0.08);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 20px -4px rgba(11, 16, 32, 0.05);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 8px 24px -4px rgba(47, 91, 255, 0.35);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #DDD8F5;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6D4AFF;
+}

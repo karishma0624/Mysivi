@@ -21,7 +21,7 @@ export interface FeatureFact {
 export const BRAND_FACTS = {
   appName: 'MySivi',
   sourceUrl: 'https://mysivi.ai',
-  disclaimer: 'Facts compiled strictly as displayed on mysivi.ai. No invented statistics.',
+  disclaimer: 'Brand figures limited to those displayed on mysivi.ai (10M+ downloads, 15+ languages, 4.7 user rating, 500K+ learners).',
   
   metrics: {
     downloads: {

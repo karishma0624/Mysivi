@@ -199,7 +199,7 @@ export const Studio: React.FC = () => {
               onClick={agent.replaySampleRun}
               className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold shadow-xs"
             >
-              Watch Recorded Run (Instant)
+              Watch a recorded run
             </button>
             <button
               type="button"

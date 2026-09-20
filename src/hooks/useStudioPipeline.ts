@@ -123,7 +123,7 @@ export function useStudioPipeline() {
       'done',
       flaggedCount > 0
         ? `${flaggedCount} policy violations corrected with safe rewrites`
-        : 'All 15 hooks verified 100% brand compliant',
+        : 'All 15 hooks verified brand compliant',
       Math.round(t7 - t6)
     );
 

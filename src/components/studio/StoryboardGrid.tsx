@@ -104,7 +104,7 @@ export const StoryboardGrid: React.FC<StoryboardGridProps> = ({ frames }) => {
             </span>
           </div>
           <p className="text-xs text-body mt-0.5">
-            Structured scenes directed by Visual Director with pure vector SVG illustrations. Zero real-person photos.
+            Structured scenes directed by Visual Director with pure vector SVG illustrations. No real-person photos.
           </p>
         </div>
 

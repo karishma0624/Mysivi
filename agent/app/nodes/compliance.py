@@ -86,7 +86,7 @@ def compliance_node(state: AgentState) -> Dict[str, Any]:
         "model_calls": model_calls,
         "tool_calls": ["claim_checker", "brand_facts"] if flagged_count > 0 else ["claim_checker"],
         "summary": f"Audited {len(hooks)} hooks: {flagged_count} flagged and safely rewritten.",
-        "preview": f"✓ Passed compliance checks ({flagged_count} rewrites applied)." if flagged_count > 0 else "✓ 100% compliant with brand & anti-shaming standards.",
+        "preview": f"✓ Passed compliance checks ({flagged_count} rewrites applied)." if flagged_count > 0 else "✓ Compliant with brand & anti-shaming standards.",
     }
 
     return {

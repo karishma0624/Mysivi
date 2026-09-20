@@ -11,7 +11,7 @@ export const DisclosureBar: React.FC = () => {
             Proof of Work Prototype:
           </span>
           <span>
-            Demonstrating AI growth workflows for MySivi • Powered by Gemini Free Tier + Simulated Campaign Datasets
+            Unofficial prototype built by S K Karishma for MySivi application • Not affiliated with MySivi • Site facts as displayed on mysivi.ai
           </span>
         </div>
         <div className="hidden lg:flex items-center gap-4 text-[10px] text-body/80">

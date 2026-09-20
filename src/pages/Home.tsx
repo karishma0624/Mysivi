@@ -75,7 +75,7 @@ export const Home: React.FC = () => {
         {/* Honesty note under hero */}
         <div className="mt-4 text-[11px] text-body/80 flex items-center gap-2">
           <CheckCircle2 className="w-3.5 h-3.5 text-brand-success" />
-          <span>1-click instant demo • 100% free tier • No API key required to test</span>
+          <span>1-click instant demo • Free tier • No API key required to test</span>
         </div>
 
         {/* Stats Row in exact layout of mysivi.ai */}

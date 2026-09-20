@@ -12,8 +12,7 @@ Built by **S K Karishma** ([GitHub](https://github.com/karishma0624) • [Linked
 
 🚀 **Live Production Deployment:** **[https://mysivi.vercel.app/](https://mysivi.vercel.app/)**
 
-> [!NOTE]
-> The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
+> Note: The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
 
 ---
 
@@ -89,8 +88,7 @@ Every piece of synthetic or simulated data is transparently badged to reflect re
 - Continuous Deployment enabled via Vercel on push to `main`.
 - Sample mode, interactive Storyboard Grid, and vector SceneComposer run client-side without external API dependencies.
 
-> [!NOTE]
-> The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
+> Note: The live site runs in Sample mode and Quick mode. Agent Mode (LangGraph) needs the Python backend running locally (see "Agent Mode" setup below), so the Agent Mode toggle will not connect on the hosted site. This is expected, not a bug.
 
 ### 1. Prerequisites
 - Node.js 18+
@@ -126,7 +124,7 @@ Agent mode utilizes a multi-agent LangGraph workflow. To run the agent backend:
 cd agent
 python -m venv .venv
 .venv\Scripts\activate   # Windows
-source .venv/bin/activate   # Mac/Linux
+source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
 uvicorn app.main:app --port 8000 --reload
 ```
@@ -135,7 +133,7 @@ The FastAPI server will be healthy at `http://localhost:8000/healthz`. The front
 #### D. Visual Directives Test Bench (`/dev/scenes`)
 During development, navigate to `http://localhost:3000/dev/scenes` to interactively preview all 11 settings, 10 character archetypes, mood FX, and lighting presets.
 > [!IMPORTANT]
-> The `/dev/scenes` route is gated behind `import.meta.env.DEV` and is completely stripped and excluded from production builds.
+> The `/dev/scenes` route is gated behind `import.meta.env.DEV` and is excluded from production builds.
 
 
 ---
@@ -166,7 +164,7 @@ Mysivi/
 │   ├── ads/                 # generate, explain
 │   └── viral/               # plan
 ├── shared/                  # Shared domain contracts (Type-safe)
-│   ├── brandFacts.ts        # MySivi verified ground-truth milestones
+│   ├── brandFacts.ts        # Facts displayed on mysivi.ai
 │   ├── brandVoice.ts        # Arya persona & brand positioning rules
 │   ├── schemas.ts           # Zod validation schemas
 │   ├── scoring.ts           # 5-factor weighted scoring algorithm
